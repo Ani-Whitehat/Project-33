@@ -4,7 +4,7 @@ var Engine = Matter.Engine,
   Bodies = Matter.Bodies;
 PLAY = 1
 END = 0
-var gameState = 1
+var gameState = PLAY
 
 var plinkos = [];
 var divisions = [];
@@ -76,27 +76,35 @@ function draw() {
   textSize(30)
   text("200",730,520);
 
+  
+
   Engine.update(engine);
- 
+
+  if (particle != null){
+      particle.display();
+      
+      
+      
+    }
   
    for (var i = 0; i < plinkos.length; i++) {
      
      plinkos[i].display();
      
    }
+   
   
    for (var k = 0; k < divisions.length; k++) {
      
      divisions[k].display();
 
    }
-   
+  
 
 }
 function mousePressed() {
-    if(gameState !== "end"){
-     particle = new Particle(mouseX,10,10,10);
-      particle.display();
-      console.log(particle.x);
+    if(gameState !== END){
+     particle = new Particle(mouseX,10,10);
+     //console.log(particle.x);
     }
 }
